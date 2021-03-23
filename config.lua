@@ -5,8 +5,9 @@ Config = {}
 Config.Invincible = true --Do you want the peds to be invincible?
 Config.Frozen = true --Do you want the peds to be unable to move? It's probably a yes, so leave true in there.
 Config.Stoic = true --Do you want the peds to react to what is happening in their surroundings?
-Config.Distance = 10 --The distance you want peds to spawn at
---Config.LOS = true --Do you want peds to only spawn when they're within line of sight? NOT IMPLEMENTED YET. Probably too process heavy.
+Config.Fade = true-- Do you want the peds to fade into/out of existence? It looks better than just *POP* its there.
+Config.Distance = 15.0 --The distance you want peds to spawn at
+
 
 --Does the system you use for grabbing coordinates require subracting from the z axis?
 --If so, set this to true. You'll have to adjust the coordinates for defaults down - 1 if you set false.

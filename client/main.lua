@@ -16,6 +16,12 @@ Citizen.CreateThread(function()
 				hasAlreadyEntered = true
 			end
 			if dist >= Config.Distance and dist <= Config.Distance + 1 then
+				if Config.Fade then
+					for i = 255, 0, -51 do
+						Citizen.Wait(50)
+						SetEntityAlpha(ped, i, false)
+					end
+				end
 				hasAlreadyEntered = false
 				DeletePed(ped)
 			end
@@ -45,9 +51,12 @@ AddEventHandler('nearPed', function(model, coords, heading, gender, animDict, an
 	if Config.MinusOne then 
 		local x, y, z = table.unpack(coords)
 		ped = CreatePed(genderNum, GetHashKey(model), x, y, z - 1, heading, false, true)
+		
 	else
 		ped = CreatePed(genderNum, GetHashKey(v.model), coords, heading, false, true)
 	end
+	
+	SetEntityAlpha(ped, 0, false)
 	
 	if Config.Frozen then
 		FreezeEntityPosition(ped, true) --Don't let the ped move.
@@ -59,7 +68,7 @@ AddEventHandler('nearPed', function(model, coords, heading, gender, animDict, an
 
 	if Config.Stoic then
 		SetBlockingOfNonTemporaryEvents(ped, true) --Don't let the ped react to his surroundings.
-	end	
+	end
 	
 	--Add an animation to the ped, if one exists.
 	if animDict and animName then
@@ -68,5 +77,12 @@ AddEventHandler('nearPed', function(model, coords, heading, gender, animDict, an
 			Citizen.Wait(1)
 		end
 		TaskPlayAnim(ped, animDict, animName, 8.0, 0, -1, 1, 0, 0, 0)
+	end
+	
+	if Config.Fade then
+		for i = 0, 255, 51 do
+			Citizen.Wait(50)
+			SetEntityAlpha(ped, i, false)
+		end
 	end
 end)
