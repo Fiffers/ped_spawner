@@ -23,10 +23,10 @@ Usage:<br>
 Below you can see an example of a code snippet you could use. Both the animDict and animName variables are completely optional.
 ```lua
   {
-	  model = { "s_m_y_xmech_02" },
-		coords = {vector3(106.11213684082,6627.7666015625,31.787231445312)}, --PALETO BAY MECHANIC
-		heading = {20.0}, 
-		gender = {"male"}, 
+	  model = "s_m_y_xmech_02",
+		coords = vector3(106.11213684082,6627.7666015625,31.787231445312), --PALETO BAY MECHANIC
+		heading = 20.0, 
+		gender = "male", 
 		animDict = "missmechanic", 
 		animName = "work_base",
   },
