@@ -31,3 +31,10 @@ Below you can see an example of a code snippet you could use. Both the animDict 
 		animName = "work_base",
   },
 ```
+
+## [1.1.0] - 2021-03-23
+ 
+### Added
+* Deletion of peds when player gets far enough away
+### Fixed
+* Took some of the config variables out of tables.
