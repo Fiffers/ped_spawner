@@ -1,7 +1,7 @@
 # ped_spawner
 
 ![keeper](https://user-images.githubusercontent.com/14336807/112101162-71129b00-8b63-11eb-9778-eb0434d97a5c.png)
-An easily configurable ped spawner for fivem servers.
+An easily configurable ped spawner for fivem servers.  Supports animations as well if you have the patience to find one you like.
 
 
 Installation:<br>
