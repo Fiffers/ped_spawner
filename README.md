@@ -40,3 +40,10 @@ Below you can see an example of a code snippet you could use. Both the animDict 
 * Deletion of peds when player gets far enough away
 ### Fixed
 * Took some of the config variables out of tables.
+
+## [1.2.0] - 2021-03-23
+ 
+### Added
+* Option to fadein/fadeout the peds<br>
+![fade](https://user-images.githubusercontent.com/14336807/112215947-33068d00-8bde-11eb-86e1-bc3408d1afde.gif)
+
