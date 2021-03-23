@@ -15,7 +15,7 @@ Configuration Options:<br>
 * Config.Stoic: Makes the peds unaware of their surroundings.<br>
 * Config.MinusOne: If you need to subtract 1 from your Z-Axis coordinates when you grab them, set this to true. If you set it to false, all the default peds need to be adjusted.<br>
 * Config.Distance: The distance you want peds to be spawned/deleted at.
-* Config.LOS: Only spawn peds when they're within LOS. NOT IMPLEMENTED YET. Probably too resource heavy.
+* Config.Fade: Allows peds to fade into/out of existence, rather than just popping in. The spawning process with this doesn't catch the eye as much.
 
 Usage:<br>
 * To add another ped, just add a new line to the end of the config.<br>
