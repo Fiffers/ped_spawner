@@ -3,7 +3,7 @@ game 'gta5'
 
 author 'sjpfeiffer'
 description 'A ped spawner for fivem'
-version '1.0.0'
+version '1.1.0'
 
 client_scripts {
 	'config.lua',
