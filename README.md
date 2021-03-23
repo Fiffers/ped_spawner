@@ -5,14 +5,21 @@ An easily configurable ped spawner for fivem servers.
 
 
 Installation:<br>
-Place the file into the resources folder for your server.
-Add 'ensure ped_spawner' to your server.cfg
-Enjoy!
+* Place the file into the resources folder for your server.<br>
+* Add 'ensure ped_spawner' to your server.cfg<br>
+* Enjoy!<br>
+
+Configuration Options:<br>
+* Config.Invincible: Makes the peds invincible.<br>
+* Config.Frozen: Makes the peds unable to move.<br>
+* Config.Stoic: Makes the peds unaware of their surroundings.<br>
+* Config.MinusOne: If you need to subtract 1 from your Z-Axis coordinates when you grab them, set this to true. If you set it to false, all the default peds need to be adjusted.<br>
 
 Usage:<br>
-To add another ped, just add a new line to the end of the config.<br>
-<a href="https://docs.fivem.net/docs/game-references/ped-models/">The Ped Model names can be found here.</a><br>
-<a href="https://alexguirre.github.io/animations-list/">A list of animations can be found here.</a><br><br>
+* To add another ped, just add a new line to the end of the config.<br>
+* <a href="https://docs.fivem.net/docs/game-references/ped-models/">The Ped Model names can be found here.</a><br>
+* <a href="https://alexguirre.github.io/animations-list/">A list of animations can be found here.</a><br><br>
+
 Below you can see an example of a code snippet you could use. Both the animDict and animName variables are completely optional.
 ```lua
   {
