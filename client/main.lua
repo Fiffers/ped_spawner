@@ -1,37 +1,34 @@
 local genderNum = 0
-local isNearPed = false
-local ped
-local hasAlreadyEntered = false
+local peds = {}
 
 Citizen.CreateThread(function()
-
 	while true do
-		Citizen.Wait(1)
+		Citizen.Wait(500)
 		for k,v in pairs (Config.PedList) do
 			local playerCoords = GetEntityCoords(PlayerPedId())
 			local dist = #(playerCoords - v.coords)
-			
-			if dist < Config.Distance and hasAlreadyEntered == false then
-				TriggerEvent('nearPed', v.model, v.coords, v.heading, v.gender, v.animDict, v.animName)
-				hasAlreadyEntered = true
+
+			if dist < Config.Distance and not peds[k] then
+				local ped = nearPed(v.model, v.coords, v.heading, v.gender, v.animDict, v.animName)
+				peds[k] = {ped = ped}
 			end
-			if dist >= Config.Distance and dist <= Config.Distance + 1 then
+			
+			if dist >= Config.Distance and peds[k] then
 				if Config.Fade then
 					for i = 255, 0, -51 do
 						Citizen.Wait(50)
-						SetEntityAlpha(ped, i, false)
+						SetEntityAlpha(peds[k].ped, i, false)
 					end
 				end
-				hasAlreadyEntered = false
-				DeletePed(ped)
+				DeletePed(peds[k].ped)
+				peds[k] = nil
 			end
 		end
 	end
-	
-	
 end)
 
-AddEventHandler('nearPed', function(model, coords, heading, gender, animDict, animName)
+function nearPed(model, coords, heading, gender, animDict, animName)
+--AddEventHandler('nearPed', function(model, coords, heading, gender, animDict, animName)
 	-- Request the models of the peds from the server, so they can be ready to spawn.
 	RequestModel(GetHashKey(model))
 	while not HasModelLoaded(GetHashKey(model)) do
@@ -85,4 +82,6 @@ AddEventHandler('nearPed', function(model, coords, heading, gender, animDict, an
 			SetEntityAlpha(ped, i, false)
 		end
 	end
-end)
+
+	return ped
+end
