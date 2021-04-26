@@ -9,7 +9,7 @@ Citizen.CreateThread(function()
 			local dist = #(playerCoords - v.coords)
 
 			if dist < Config.Distance and not peds[k] then
-				local ped = nearPed(v.model, v.coords, v.heading, v.gender, v.animDict, v.animName)
+				local ped = nearPed(v.model, v.coords, v.heading, v.gender, v.animDict, v.animName, v.scenario)
 				peds[k] = {ped = ped}
 			end
 			
@@ -27,7 +27,7 @@ Citizen.CreateThread(function()
 	end
 end)
 
-function nearPed(model, coords, heading, gender, animDict, animName)
+function nearPed(model, coords, heading, gender, animDict, animName, scenario)
 --AddEventHandler('nearPed', function(model, coords, heading, gender, animDict, animName)
 	-- Request the models of the peds from the server, so they can be ready to spawn.
 	RequestModel(GetHashKey(model))
@@ -74,6 +74,10 @@ function nearPed(model, coords, heading, gender, animDict, animName)
 			Citizen.Wait(1)
 		end
 		TaskPlayAnim(ped, animDict, animName, 8.0, 0, -1, 1, 0, 0, 0)
+	end
+
+	if scenario then
+		TaskStartScenarioInPlace(ped, scenario, 0, true) -- begins peds animation
 	end
 	
 	if Config.Fade then
