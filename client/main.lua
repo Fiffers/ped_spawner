@@ -1,6 +1,3 @@
-local genderNum = 0
-local peds = {}
-
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(500)
@@ -9,26 +6,29 @@ Citizen.CreateThread(function()
 			local playerCoords = GetEntityCoords(PlayerPedId())
 			local dist = #(playerCoords - v.coords)
 
-			if dist < Config.Distance and not peds[k] then
+			if dist < Config.Distance and not v.isRendered then
 				local ped = nearPed(v.model, v.coords, v.heading, v.gender, v.animDict, v.animName, v.scenario)
-				peds[k] = {ped = ped}
+				v.ped = ped
+				v.isRendered = true
 			end
 			
-			if dist >= Config.Distance and peds[k] then
+			if dist >= Config.Distance and v.isRendered then
 				if Config.Fade then
 					for i = 255, 0, -51 do
 						Citizen.Wait(50)
-						SetEntityAlpha(peds[k].ped, i, false)
+						SetEntityAlpha(v.ped, i, false)
 					end
 				end
-				DeletePed(peds[k].ped)
-				peds[k] = nil
+				DeletePed(v.ped)
+				v.ped = nil
+				v.isRendered = false
 			end
 		end
 	end
 end)
 
 function nearPed(model, coords, heading, gender, animDict, animName, scenario)
+	local genderNum = 0
 --AddEventHandler('nearPed', function(model, coords, heading, gender, animDict, animName)
 	-- Request the models of the peds from the server, so they can be ready to spawn.
 	RequestModel(GetHashKey(model))
