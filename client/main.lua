@@ -7,7 +7,7 @@ Citizen.CreateThread(function()
 			local dist = #(playerCoords - v.coords)
 
 			if dist < Config.Distance and not v.isRendered then
-				local ped = nearPed(v.model, v.coords, v.heading, v.gender, v.animDict, v.animName, v.scenario)
+				local ped = nearPed(v.model, v.coords, v.heading, v.gender, v.animDict, v.animName, v.scenario, v.options, v.distance)
 				v.ped = ped
 				v.isRendered = true
 			end
@@ -20,6 +20,7 @@ Citizen.CreateThread(function()
 					end
 				end
 				DeletePed(v.ped)
+				exports.qtarget:RemoveZone("ped_spawner-"..v.ped)
 				v.ped = nil
 				v.isRendered = false
 			end
@@ -27,7 +28,7 @@ Citizen.CreateThread(function()
 	end
 end)
 
-function nearPed(model, coords, heading, gender, animDict, animName, scenario)
+function nearPed(model, coords, heading, gender, animDict, animName, scenario, options, distance)
 	local genderNum = 0
 --AddEventHandler('nearPed', function(model, coords, heading, gender, animDict, animName)
 	-- Request the models of the peds from the server, so they can be ready to spawn.
@@ -86,6 +87,17 @@ function nearPed(model, coords, heading, gender, animDict, animName, scenario)
 			Citizen.Wait(50)
 			SetEntityAlpha(ped, i, false)
 		end
+	end
+
+	if options and distance then
+		exports.qtarget:AddEntityZone("ped_spawner-"..ped, ped, {
+			name = "ped_spawner-"..ped,
+			heading=GetEntityHeading(ped),
+			debugPoly=false,
+		}, {
+			options = options,
+			distance = distance
+		})
 	end
 
 	return ped
