@@ -26,6 +26,15 @@ Config.PedList = {
 		--animName = "", --The animation name. Optional. Comment out or delete if not using.
 	    isRendered = false,
         ped = nil,
+		options = {
+            {
+                type = "client",
+                event = "qb-clothing:client:openBarberMenu",
+                icon = "fas fa-cut",
+                label = "Change Haircut",
+            },
+        },
+		distance = 3.5,
     },
 	
 	{
@@ -35,6 +44,15 @@ Config.PedList = {
 		gender = "female", 
 	    isRendered = false,
         ped = nil,
+		options = {
+            {
+                type = "client",
+                event = "qb-clothing:client:openBarberMenu",
+                icon = "fas fa-cut",
+                label = "Change Haircut",
+            },
+        },
+		distance = 3.5,
     },
 	
 	{
@@ -44,6 +62,15 @@ Config.PedList = {
 		gender = "female", 
 	    isRendered = false,
         ped = nil,
+		options = {
+            {
+                type = "client",
+                event = "qb-clothing:client:openBarberMenu",
+                icon = "fas fa-cut",
+                label = "Change Haircut",
+            },
+        },
+		distance = 3.5,
     },
 	
 	{
@@ -53,6 +80,15 @@ Config.PedList = {
 		gender = "female", 
 	    isRendered = false,
         ped = nil,
+		options = {
+            {
+                type = "client",
+                event = "qb-clothing:client:openBarberMenu",
+                icon = "fas fa-cut",
+                label = "Change Haircut",
+            },
+        },
+		distance = 3.5,
     },
 	
 	{
@@ -62,6 +98,15 @@ Config.PedList = {
 		gender = "female", 
 	    isRendered = false,
         ped = nil,
+		options = {
+            {
+                type = "client",
+                event = "qb-clothing:client:openBarberMenu",
+                icon = "fas fa-cut",
+                label = "Change Haircut",
+            },
+        },
+		distance = 3.5,
     },
 	
 	{
@@ -71,6 +116,15 @@ Config.PedList = {
 		gender = "female", 
 	    isRendered = false,
         ped = nil,
+		options = {
+            {
+                type = "client",
+                event = "qb-clothing:client:openBarberMenu",
+                icon = "fas fa-cut",
+                label = "Change Haircut",
+            },
+        },
+		distance = 3.5,
     },
 	
 	----------------------------------------
